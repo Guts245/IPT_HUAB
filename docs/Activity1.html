@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCS MilkTea Ordering App</title>
+</head>
+<body>
+    <h1>CCS MilkTea Ordering App</h1>
+    <h1>Flavors:</h1>
+    <form id="flavorForm">
+        <input type="radio" name="flavor" value="60"> Taro (₱ 60)<br>
+        <input type="radio" name="flavor" value="50"> Matcha (₱ 50)<br>
+        <input type="radio" name="flavor" value="55"> Okinawa (₱ 55)<br>
+    </form>
+    <h1>Sinkers:</h1>
+    <form id="sinkerForm">
+        <input type="checkbox" name="sinker" value="10"> Pearl (₱ 10)<br>
+        <input type="checkbox" name="sinker" value="15"> Jelly (₱ 15)<br>
+        <input type="checkbox" name="sinker" value="13"> Nata (₱ 13)<br>
+    </form>
+    <label for="cash">Input Cash:</label>
+    <input type="text" id="cash"><br>
+    <button onclick="compute()">Compute</button><br><br>
+    
+    
+
+    <script>
+        function compute() {
+            var flavorPrice = 0;
+            var sinkerPrice = 0;
+            var flavorRadios = document.getElementsByName('flavor');
+            var sinkerCheckboxes = document.getElementsByName('sinker');
+            var cash = parseInt(document.getElementById('cash').value);
+
+            for (var i = 0; i < flavorRadios.length; i++) {
+                if (flavorRadios[i].checked) {
+                    flavorPrice = parseInt(flavorRadios[i].value);
+                    break;
+                }
+            }
+
+            for (var i = 0; i < sinkerCheckboxes.length; i++) {
+                if (sinkerCheckboxes[i].checked) {
+                    sinkerPrice += parseInt(sinkerCheckboxes[i].value);
+                }
+            }
+
+            var totalAmount = flavorPrice + sinkerPrice;
+            
+            alert("Total Amount: " + totalAmount + "\nCash: " + cash + "\nChange: " + (cash - totalAmount));
+        }
+
+        
+        
+    </script>
+</body>
+</html>
